@@ -10,18 +10,22 @@ const Button = (props) => {
 };
 
 const Application = () => {
+  const [name, setName] = useState("");
 
-  // your code here
+  const handleChange = (event) => {
+    const userInput = event.target.value;
+    setName(userInput);
+  };
 
   const reset = () => {
-    console.log("reset");
-    // your code here
+    setName("");
   };
 
   return (
     <main>
+      <input onChange={handleChange} placeholder="Type your name" value={(name)}/>
       <Button reset={reset}/>
-      <h1>Hello React</h1>
+      <h1>{(name === "" ? "Please enter your name" : `Hello ${name}`)}</h1>
     </main>
   );
 };
